@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b0d12">
+<title>Kennosuke Sunohara | プロフィール</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+
+<link rel="manifest" href="manifest.json">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Kennosuke Sunohara">
+<link rel="apple-touch-icon" href="images/icon-apple-touch.png">
+</head>
+<body>
+<header class="site-header">
+<div class="hero">
+<div class="hero-inner">
+<img src="images/Kennosuke.jpeg" alt="Kennosuke Sunohara" class="hero-avatar">
+</div>
+</div>
+</header>
+
+<div class="identity-block">
+<div class="identity-info">
+<h1 class="identity-title">Kennosuke Sunohara</h1>
+<div class="identity-address">
+</div>
+<p class="identity-subtitle">
+Hosei University '27 | Faculty of Global Interdisciplinary Studies (GIS) | HR Assistant @ Shippio | GIS Ambassador | Representative eSports Hopii Gaming | LinkedIn Student Club 4th Director
+</p>
+</div>
+</div>
+
+<main class="card">
+<div class="sns">
+<div class="sns-grid">
+<a href="https://www.linkedin.com/in/%E5%A0%85%E4%B9%8B%E4%BB%8B-%E6%98%A5%E5%8E%9F-9512a730a/" class="sns-btn" target="_blank">
+<img src="images/LinkedIn画像 copy.png" alt="LinkedIn">
+<span class="label">LinkedIn</span>
+</a>
+</div>
+</div>
+</main>
+
+<footer class="footer">
+<p>&copy; 2024 Kennosuke Sunohara. All rights reserved.</p>
+</footer>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+<div class="lb-viewport">
+<img class="lightbox-img" id="lightbox-img" src="" alt="">
+<button class="lb-btn lb-close" onclick="closeLightbox()">×</button>
+<button class="lb-btn lb-prev" onclick="prevImage()">‹</button>
+<button class="lb-btn lb-next" onclick="nextImage()">›</button>
+</div>
+</div>
+
+<script>
+// Lightbox functionality
+let currentImageIndex = 0;
+const images = document.querySelectorAll('.gallery-grid img');
+
+function openLightbox(img) {
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+currentImageIndex = Array.from(images).indexOf(img);
+lightboxImg.src = img.src;
+lightbox.classList.add('open');
+}
+
+function closeLightbox() {
+document.getElementById('lightbox').classList.remove('open');
+}
+
+function prevImage() {
+currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+document.getElementById('lightbox-img').src = images[currentImageIndex].src;
+}
+
+function nextImage() {
+currentImageIndex = (currentImageIndex + 1) % images.length;
+document.getElementById('lightbox-img').src = images[currentImageIndex].src;
+}
+
+// Close lightbox on escape key
+document.addEventListener('keydown', function(e) {
+if (e.key === 'Escape') {
+closeLightbox();
+}
+});
+
+// Register service worker
+if ('serviceWorker' in navigator) {
+window.addEventListener('load', function() {
+navigator.serviceWorker.register('/sw.js')
+.then(function(registration) {
+console.log('ServiceWorker registration successful');
+})
+.catch(function(err) {
+console.log('ServiceWorker registration failed');
+});
+}
+}
+</script>
+</body>
+</html>
