@@ -31,7 +31,7 @@ max-width: var(--page-max);
 width: calc(100% - (var(--page-pad) * 2));
 margin: 0 auto;
 /* 編集: ヘッダーの背景画像 */
-background: url('images/Kennosuke.backgroud.jpeg') center/cover no-repeat, linear-gradient(180deg, rgba(11,13,18,.3), rgba(11,13,18,.5));
+background: url('images/LinkedIn.jpeg') center/cover no-repeat, linear-gradient(180deg, rgba(11,13,18,.3), rgba(11,13,18,.5));
 border: 3px solid rgba(255,255,255,.08);
 border-radius: 24px;
 }
